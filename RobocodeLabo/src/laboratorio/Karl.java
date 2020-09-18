@@ -9,7 +9,7 @@ public class Karl extends JuniorRobot
 	private RobotStrategy Strategy;
 	
 	public Karl () {
-		Strategy = new HighEnergyStrategy(this);
+		Strategy = new OneRemainingStrategy(this);
 	}
 	
 	@Override	

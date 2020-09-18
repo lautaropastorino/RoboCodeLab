@@ -14,16 +14,11 @@ public class LowEnergyStrategy implements RobotStrategy {
 
 	@Override
 	public void onScannedRobot() {
-//		int generatedAngle = ThreadLocalRandom.current().nextInt(karl.scannedAngle - 2, karl.scannedAngle + 3);
-//		this.karl.turnGunTo(generatedAngle);
 		this.karl.turnGunTo(this.karl.scannedAngle);
 		this.karl.fire(3);
 		if (this.karl.scannedDistance <= 200) {
-			if (this.karl.scannedDistance <= 100) {
-				System.out.println("Cerca");
-				move = 2;
-			} else {
-				move = 3;
+			if (this.karl.scannedDistance <= 50) {
+				move = 3;		// Si está muy cerca de un robot, se mueve a una mayor distancia.
 			}
 		}
 	}
@@ -43,7 +38,7 @@ public class LowEnergyStrategy implements RobotStrategy {
 		int exceso = ThreadLocalRandom.current().nextInt(-20, 21);
 		this.karl.ahead((100 + exceso) * move);
 		System.out.println("Move = " + move);
-		this.karl.turnGunRight(360);
+		this.karl.turnGunRight(180);
 		this.karl.back((100 + exceso) * move);
 		move = 1;
 	}
