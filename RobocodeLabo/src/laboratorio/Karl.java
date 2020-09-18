@@ -9,13 +9,16 @@ public class Karl extends JuniorRobot
 	private RobotStrategy Strategy;
 	
 	public Karl () {
-		Strategy = new HighEnergyStrategy(this);
+		Strategy = new LowEnergyStrategy(this);//HighEnergyStrategy(this);
 	}
 	
 	@Override	
 	public void run() {
 		setColors(red, yellow, red, yellow, yellow);
 		this.Strategy.run();
+		if (this.others == 2) {
+			this.Strategy = new LeftSideStrategy(this);
+		}
 	}
 
 	/**
