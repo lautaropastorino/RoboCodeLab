@@ -14,6 +14,8 @@ public class LowEnergyStrategy implements RobotStrategy {
 
 	@Override
 	public void onScannedRobot() {
+//		int generatedAngle = ThreadLocalRandom.current().nextInt(karl.scannedAngle - 2, karl.scannedAngle + 3);
+//		this.karl.turnGunTo(generatedAngle);
 		this.karl.turnGunTo(this.karl.scannedAngle);
 		this.karl.fire(3);
 		if (this.karl.scannedDistance <= 200) {
@@ -48,7 +50,11 @@ public class LowEnergyStrategy implements RobotStrategy {
 
 	@Override
 	public void onHitRobot() {
-		//move = 0;
+		if (this.karl.hitRobotBearing < 90) {
+			this.karl.turnBackLeft(100, 90);
+		} else {
+			this.karl.turnAheadRight(100, 90);
+		}
 	}
 
 }
