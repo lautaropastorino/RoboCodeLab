@@ -2,12 +2,12 @@ package laboratorio;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class LowEnergyStrategy implements RobotStrategy {
+public class MultipleEnemiesStrategy implements RobotStrategy {
 	
 	private Karl karl;
 	private int move;
 	
-	public LowEnergyStrategy(Karl karl) {
+	public MultipleEnemiesStrategy(Karl karl) {
 		this.karl = karl;
 		move = 1;
 	}
