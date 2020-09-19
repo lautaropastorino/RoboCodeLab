@@ -21,9 +21,10 @@ public class LeftSideStrategy implements RobotStrategy{
 	}
 
 	@Override
-	public RobotStrategy onHitByBullet() {
-		this.karl.turnRight(90 - this.karl.hitByBulletBearing);
-		return this;
+	public void onHitByBullet() {
+		if (this.karl.robotX > 100) {
+			this.karl.turnRight(90 - this.karl.hitByBulletBearing);
+		}
 	}
 
 	@Override

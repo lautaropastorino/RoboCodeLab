@@ -22,9 +22,8 @@ public class MultipleEnemiesStrategy implements RobotStrategy {
 	}
 
 	@Override
-	public RobotStrategy onHitByBullet() {
+	public void onHitByBullet() {
 		this.karl.turnRight(90 - this.karl.hitByBulletBearing);
-		return this;
 	}
 
 	@Override
