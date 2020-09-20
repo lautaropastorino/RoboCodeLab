@@ -12,18 +12,22 @@ public class OneRemainingStrategy implements RobotStrategy {
 
 	@Override
 	public void run() {
-		int generatedMovement = ThreadLocalRandom.current().nextInt(300, 600);
-		this.karl.ahead(generatedMovement);
-		this.karl.turnGunRight(360);
-		generatedMovement = ThreadLocalRandom.current().nextInt(300, 600);
-		this.karl.back(generatedMovement);
-		this.karl.turnGunLeft(360);
+		int generatedMovement = ThreadLocalRandom.current().nextInt(400, 600);
+		int step = (int) generatedMovement / 3;
+		for (int i = 1; i <= 3; i++) {
+			this.karl.ahead(step);
+			this.karl.turnGunRight(60);
+		}
+		for (int j = 1; j <= 3; j++) {
+			this.karl.back(step);
+			this.karl.turnGunRight(60);
+		}
 	}
 
 	@Override
 	public void onScannedRobot() {
 		this.karl.turnGunTo(this.karl.scannedAngle);
-		this.karl.fire(2);
+		this.karl.fire(3);
 	}
 
 	@Override
@@ -34,7 +38,7 @@ public class OneRemainingStrategy implements RobotStrategy {
 
 	@Override
 	public void onHitWall() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

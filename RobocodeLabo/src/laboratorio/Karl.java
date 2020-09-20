@@ -19,7 +19,7 @@ public class Karl extends JuniorRobot
 		if (this.others == 2) {
 			this.Strategy = new LeftSideStrategy(this);
 		} else if (this.others == 1) {
-			this.Strategy = new HighEnergyStrategy(this);
+			this.Strategy = new OneRemainingStrategy(this);
 		}
 	}
 
