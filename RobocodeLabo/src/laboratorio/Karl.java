@@ -9,7 +9,7 @@ public class Karl extends JuniorRobot
 	private RobotStrategy Strategy;
 	
 	public Karl () {
-		Strategy = new MultipleEnemiesStrategy(this);//HighEnergyStrategy(this);
+		Strategy = new MultipleEnemiesStrategy(this);
 	}
 	
 	@Override	
@@ -36,7 +36,7 @@ public class Karl extends JuniorRobot
 	 */
 	@Override
 	public void onHitByBullet() {
-		this.Strategy = this.Strategy.onHitByBullet();
+		this.Strategy.onHitByBullet();
 	}
 	
 	/**

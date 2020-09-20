@@ -6,10 +6,10 @@ public interface RobotStrategy {
 	
 	public void onScannedRobot();
 	
-	public RobotStrategy onHitByBullet();
+	public void onHitByBullet();
 	
 	public void onHitWall();
 	
 	public void onHitRobot();
-
+	
 }

@@ -15,15 +15,15 @@ public class LeftSideStrategy implements RobotStrategy{
 	public void onScannedRobot() {
 		this.karl.turnGunTo(this.karl.scannedAngle);
 		this.karl.fire(3);
+		// Si está muy cerca el escaneado
 		if (this.karl.scannedDistance <= 50) {
+			// Nos movemos más distancia
 			move = 3;
 		}
 	}
 
 	@Override
-	public RobotStrategy onHitByBullet() {
-		this.karl.turnRight(90 - this.karl.hitByBulletBearing);
-		return this;
+	public void onHitByBullet() {
 	}
 
 	@Override
@@ -32,24 +32,29 @@ public class LeftSideStrategy implements RobotStrategy{
 
 	@Override
 	public void run() {
-		int exceso = ThreadLocalRandom.current().nextInt(-20, 21);
+		/* Si ya estamos a la izquierda nos ponemos mirando hacia arriba y subimos
+		 * y bajamos escaneado solo hacia la derecha */
 		if (this.karl.robotX <= 100) {
+			int exceso = ThreadLocalRandom.current().nextInt(-20, 21);
 			this.karl.turnTo(0);
 			this.karl.turnGunTo(0);
 			this.karl.ahead((100 + exceso) * move);
 			this.karl.turnGunRight(180);
 			this.karl.back((100 + exceso) * move);
 			this.karl.turnGunLeft(180);
+		/* Si no estamos a la izquierda, apuntamos hacia allá y vamos. Tambien escaneamos */
 		} else {
 			this.karl.turnTo(270);
 			this.karl.ahead(100);
 			this.karl.turnGunRight(180);
 		}
+		// Reiniciamos el modificador de distancia
 		move = 1;
 	}
 
 	@Override
 	public void onHitRobot() {
+		// Si chocamos de frente
 		if (this.karl.hitRobotBearing < 90) {
 			this.karl.turnBackLeft(100, 90);
 		} else {

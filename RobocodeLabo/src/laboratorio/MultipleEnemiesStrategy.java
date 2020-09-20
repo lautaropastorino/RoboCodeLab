@@ -22,9 +22,11 @@ public class MultipleEnemiesStrategy implements RobotStrategy {
 	}
 
 	@Override
-	public RobotStrategy onHitByBullet() {
-		this.karl.turnRight(90 - this.karl.hitByBulletBearing);
-		return this;
+	public void onHitByBullet() {
+		// Nos ponemos perpendiculares al ángulo de donde vino la bala
+		if (this.karl.others <= 4) {
+			this.karl.turnRight(90 - this.karl.hitByBulletBearing);
+		}
 	}
 
 	@Override
@@ -33,6 +35,7 @@ public class MultipleEnemiesStrategy implements RobotStrategy {
 
 	@Override
 	public void run() {
+		// Generamos aleatoriamente un modificador de distancia
 		int exceso = ThreadLocalRandom.current().nextInt(-20, 21);
 		this.karl.ahead((100 + exceso) * move);
 		this.karl.turnGunRight(180);
@@ -42,6 +45,7 @@ public class MultipleEnemiesStrategy implements RobotStrategy {
 
 	@Override
 	public void onHitRobot() {
+		// Si nos chocamos de frente
 		if (this.karl.hitRobotBearing < 90) {
 			this.karl.turnBackLeft(100, 90);
 		} else {
