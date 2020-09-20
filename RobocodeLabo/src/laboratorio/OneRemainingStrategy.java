@@ -31,9 +31,7 @@ public class OneRemainingStrategy implements RobotStrategy {
 	}
 
 	@Override
-	public RobotStrategy onHitByBullet() {
-		// TODO Auto-generated method stub
-		return this;
+	public void onHitByBullet() {
 	}
 
 	@Override
