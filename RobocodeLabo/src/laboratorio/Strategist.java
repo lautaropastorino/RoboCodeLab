@@ -9,7 +9,6 @@ public abstract class Strategist {
 		robot = r;
 	}
 	
-	public RobotStrategy getEstrategia() {
-		return null;
-	}
+	abstract RobotStrategy getEstrategia();
+
 }

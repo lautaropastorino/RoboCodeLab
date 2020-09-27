@@ -104,7 +104,7 @@ public class OffensiveStrategist extends Strategist {
 	}
 	
 	public RobotStrategy getEstrategia() {
-		if (robot.energy > 75) {
+		if (robot.others >= 2) {
 			return new ShootAndKiteStrategy();
 		} else {
 			return new HighMobilityStrategy();
