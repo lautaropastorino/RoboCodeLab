@@ -41,7 +41,7 @@ public class DefensiveStrategist extends Strategist {
 		@Override
 		public void run() {
 			/* Si ya estamos a la izquierda nos ponemos mirando hacia arriba y subimos
-			 * y bajamos escaneado solo hacia la derecha */
+			 * y bajamos escaneando solo hacia la derecha */
 			if (robot.robotX <= 100) {
 				int exceso = ThreadLocalRandom.current().nextInt(-20, 21);
 				robot.turnTo(0);
@@ -78,18 +78,18 @@ public class DefensiveStrategist extends Strategist {
 			if (robot.robotX <= 100) {
 				robot.turnTo(0);
 				robot.turnGunTo(0);
-				// Llegamos hasta el punto Y más alto del mapa.
-				robot.ahead(robot.fieldHeight - robot.robotY);
+				// Llegamos hasta el punto Y mï¿½s alto del mapa.
+				robot.ahead(robot.fieldHeight - robot.robotY - 30);
 				robot.turnGunRight(90);
 				// Ahora recorremos el ancho del mapa.
 				robot.turnRight(90);
-				robot.ahead(robot.fieldWidth - robot.robotX);
-				// Llegamos hasta el punto x más alto del mapa, ahora volvemos.
+				robot.ahead(robot.fieldWidth - robot.robotX - 30);
+				// Llegamos hasta el punto x mï¿½s alto del mapa, ahora volvemos.
 				robot.turnRight(180);
-				robot.ahead(robot.fieldWidth);
-				// Vamos hasta el punto y más bajo del mapa.
+				robot.ahead(robot.fieldWidth - 120);
+				// Vamos hasta el punto y mï¿½s bajo del mapa.
 				robot.turnLeft(90);
-				robot.ahead(robot.fieldHeight);
+				robot.ahead(robot.fieldHeight - 30);
 				robot.turnGunRight(180);
 			} else {
 				robot.turnTo(270);
@@ -121,6 +121,6 @@ public class DefensiveStrategist extends Strategist {
 	public RobotStrategy getEstrategia() {
 		// Si tenemos poca energia, el robot enemigo nos saca mucha diferencia de energia y hay menos de 2 robots
 		if ( robot.energy < 10 && ((robot.scannedEnergy - robot.energy) > 50 ) && robot.others <= 2) { return new EscapeStrategy(); }
-		else { return new LeftSideWallStrategy(); }
+		else { return new EscapeStrategy(); }
 	}
 }

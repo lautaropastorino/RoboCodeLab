@@ -14,7 +14,7 @@ public class Karl extends JuniorRobot
 	@Override	
 	public void run() {
 		setColors(red, yellow, red, yellow, yellow);
-		if (this.energy <= 30) {
+		if (this.energy >= 20) {
 			this.Strategist = new DefensiveStrategist(this);
 		} else {
 			this.Strategist = new OffensiveStrategist(this);
