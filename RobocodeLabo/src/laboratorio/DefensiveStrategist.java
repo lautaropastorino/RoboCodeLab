@@ -86,10 +86,10 @@ public class DefensiveStrategist extends Strategist {
 				robot.ahead(robot.fieldWidth - robot.robotX - 30);
 				// Llegamos hasta el punto x m�s alto del mapa, ahora volvemos.
 				robot.turnRight(180);
-				robot.ahead(robot.fieldWidth - 120);
+				robot.ahead(robot.fieldWidth - 60);
 				// Vamos hasta el punto y m�s bajo del mapa.
 				robot.turnLeft(90);
-				robot.ahead(robot.fieldHeight - 30);
+				robot.ahead(robot.fieldHeight - 60);
 				robot.turnGunRight(180);
 			} else {
 				robot.turnTo(270);
@@ -104,8 +104,7 @@ public class DefensiveStrategist extends Strategist {
 		public void onHitByBullet() {}
 
 		@Override
-		public void onHitWall() {
-		}
+		public void onHitWall() {}
 
 		@Override
 		public void onHitRobot() {
@@ -121,6 +120,6 @@ public class DefensiveStrategist extends Strategist {
 	public RobotStrategy getEstrategia() {
 		// Si tenemos poca energia, el robot enemigo nos saca mucha diferencia de energia y hay menos de 2 robots
 		if ( robot.energy < 10 && ((robot.scannedEnergy - robot.energy) > 50 ) && robot.others <= 2) { return new EscapeStrategy(); }
-		else { return new EscapeStrategy(); }
+		else { return new LeftSideWallStrategy(); }
 	}
 }
