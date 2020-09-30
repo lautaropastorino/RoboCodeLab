@@ -7,19 +7,19 @@ import robocode.*;
 public class Karl extends JuniorRobot
 {
 	private RobotStrategy Strategy;
-	private Strategist Strategist;
+	private Strategists EstrategaPrincipal;
+	private Strategist EstrategaConcreto;
 	
-	public Karl () {}
+	public Karl () {
+		EstrategaPrincipal = new Strategists(this); 
+	}
 	
 	@Override	
 	public void run() {
 		setColors(red, yellow, red, yellow, yellow);
-		if (this.energy <= 30) {
-			this.Strategist = new DefensiveStrategist(this);
-		} else {
-			this.Strategist = new OffensiveStrategist(this);
-		} 
-		Strategy = Strategist.getEstrategia();
+		if (this.energy <= 30) { EstrategaConcreto = this.EstrategaPrincipal.getEstrategaDefensiva(); } 
+		else { EstrategaConcreto = this.EstrategaPrincipal.getEstrategaOfensiva(); } 
+		this.Strategy = this.EstrategaConcreto.obtenerEstrategia();
 		this.Strategy.run();
 	}
 

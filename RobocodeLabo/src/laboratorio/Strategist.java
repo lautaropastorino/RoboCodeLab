@@ -1,14 +1,7 @@
 package laboratorio;
 
-import robocode.JuniorRobot;
-
-public abstract class Strategist {
-	protected JuniorRobot robot;
+public interface Strategist {
 	
-	public Strategist(JuniorRobot r) {
-		robot = r;
-	}
+	public RobotStrategy obtenerEstrategia();
 	
-	abstract RobotStrategy getEstrategia();
-
 }
